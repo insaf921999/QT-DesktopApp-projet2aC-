@@ -1,0 +1,71 @@
+#include "mailing.h"
+#include "ui_mailing.h"
+#include"QSqlRecord"
+#include"QSqlQuery"
+#include <QFileDialog>
+#include <QDesktopWidget>
+#include <QDebug>
+#include "smtp.h"
+#include <QtCore>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QtNetwork/QAbstractSocket>
+#include <QtNetwork/QSslSocket>
+#include <QString>
+#include <QTextStream>
+#include <QDebug>
+#include <QtWidgets/QMessageBox>
+#include <QByteArray>
+mailing::mailing(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::mailing)
+{
+    ui->setupUi(this);
+}
+
+mailing::~mailing()
+{
+    delete ui;
+}
+
+void mailing::on_SendEmail_clicked()
+{
+   /* QString email=ui->email->text();
+    //QString email="insaf921999@gmail.com";
+    QString nom=ui->fullname->text();
+    QString prenom=ui->lastname->text();
+    QString subject=ui->subject->text();
+    QString msg=ui->msg->toPlainText();
+    qDebug()<< email;
+    Smtp* smtp=new Smtp("insaf.elinkichari@esprit.tn","181JFT2762","smtp.gmail.com");
+                   connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+    smtp->sendMail("", email ,subject,""+nom+" "+prenom+" "+msg+" ");
+
+     if((nom=="") || (email=="") || (subject=="") || (msg==""))
+     {
+         QMessageBox::warning( 0, tr( "Qt Simple SMTP" ), tr( "il Ya un champ Vide!\n\n" ) );
+     }
+
+     if((nom!="") && (prenom!="") && (email!="") && (subject!="") && (msg!=""))
+     {
+     QMessageBox::information( 0, tr( "Qt Simple SMTP" ), tr( "Message sent!\n\n" ) );
+     }*/
+       QString email=ui->email->text();
+       //QString email="insaf921999@gmail.com";
+      // QString nom=ui->fullname->text();
+       //QString prenom=ui->lastname->text();
+       QString subject=ui->subject->text();
+       QString msg=ui->msg->toPlainText();
+       qDebug()<< email;
+       Smtp* smtp=new Smtp("insaf.elinkichari@esprit.tn","181JFT2762","smtp.gmail.com");
+                      connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+       smtp->sendMail("", email ,subject," "+msg+" ");
+        if((email=="") || (subject=="") || (msg==""))
+        {
+            QMessageBox::warning( 0, tr( "Qt Simple SMTP" ), tr( "il Ya un champ Vide!\n\n" ) );
+        }
+        if((email!="") && (subject!="") && (msg!=""))
+        {
+        QMessageBox::information( 0, tr( "Qt Simple SMTP" ), tr( "Message sent!\n\n" ) );
+        }
+}
