@@ -1,27 +1,28 @@
+
 #include "mainwindow.h"
 #include <QApplication>
-#include "connexion.h"
 #include <QMessageBox>
-
+#include "connection.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    a.setStyle("fusion");
     MainWindow w;
-    connexion c;
-    QMessageBox msgBox;
-    if(c.ouvrircnx())
+    Connection c;
+    w.show();
+    bool test=c.createconnect();
+    if(test)
     {
+        QMessageBox::information(nullptr, QObject::tr("database is open"),
+                    QObject::tr("connection successful.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
 
-         msgBox.setText("Connexion avec succès");
-         msgBox.exec();
+}
+    else
+        QMessageBox::critical(nullptr, QObject::tr("database is not open"),
+                    QObject::tr("connection failed.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
 
-         w.show();
 
-
-    } else
-    {msgBox.setText("Echec de la connexion");
-        msgBox.exec(); }
 
     return a.exec();
 }

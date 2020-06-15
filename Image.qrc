@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>632.wav</file>
+        <file>img/1.jpg</file>
+        <file>img/add.png</file>
+        <file>img/d.png</file>
+        <file>img/dawn.png</file>
+        <file>img/eye.jpg</file>
+        <file>img/image.png</file>
+        <file>img/ims.png</file>
+        <file>img/learn.png</file>
+        <file>img/lire.png</file>
+        <file>img/print.jpg</file>
+        <file>img/read.png</file>
+        <file>img/search.png</file>
+        <file>img/supp.png</file>
+        <file>img/unnamed.png</file>
+        <file>img/up.png</file>
+        <file>img/update.png</file>
+    </qresource>
+</RCC>

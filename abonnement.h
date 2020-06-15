@@ -34,7 +34,7 @@ private slots:
 
 private:
     Ui::abonnement *ui;
-  abonnementCode  tmpabonnement;
+  abonnementCode tmpabonnement;
 };
 
 #endif // ABONNEMENT_H

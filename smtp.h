@@ -1,5 +1,7 @@
 #ifndef SMTP_H
 #define SMTP_H
+
+
 #include <QtNetwork/QAbstractSocket>
 #include <QtNetwork/QSslSocket>
 #include <QString>
@@ -7,7 +9,9 @@
 #include <QDebug>
 #include <QtWidgets/QMessageBox>
 #include <QByteArray>
-
+#include <QFile>
+#include <QFileInfo>
+#include <QMetaObject>
 
 
 class Smtp : public QObject
@@ -21,7 +25,8 @@ public:
     ~Smtp();
 
     void sendMail( const QString &from, const QString &to,
-                   const QString &subject, const QString &body );
+                   const QString &subject, const QString &body,
+                   QStringList files = QStringList());
 
 signals:
     void status( const QString &);
@@ -32,6 +37,7 @@ private slots:
     void disconnected();
     void connected();
     void readyRead();
+
 private:
     int timeout;
     QString message;
@@ -46,5 +52,6 @@ private:
     int port;
     enum states{Tls, HandShake ,Auth,User,Pass,Rcpt,Mail,Data,Init,Body,Quit,Close};
     int state;
+
 };
 #endif

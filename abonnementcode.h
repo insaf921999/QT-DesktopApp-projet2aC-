@@ -9,14 +9,15 @@ class abonnementCode
 {
 public:
     abonnementCode();
-    abonnementCode(int,QString,QString,QDate,QDate,QDate,int);
+    abonnementCode(int,QString,QString,int,QDate,QDate,QDate);
     int get_id();
     QString get_nom();
     QString get_prenom();
+    int get_numplace();
     QDate get_date_naiss();
     QDate get_date_deb();
     QDate get_date_fin();
-    int get_numplace();
+
 
     bool ajouter();
 QSqlQueryModel * afficherID(int);
@@ -29,11 +30,10 @@ private:
     int id;
     QString nom;
     QString prenom;
+    int numplace;
     QDate datenaiss;
     QDate datedeb;
     QDate datefin;
-    int numplace;
-
 
 };
 
