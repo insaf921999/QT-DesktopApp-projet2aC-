@@ -1,6 +1,4 @@
 #include "cartesolde.h"
-#include "gestionsolde.h"
-#include "ui_gestionsolde.h"
 #include "client.h"
 #include <QSqlQuery>
 #include<QString>
@@ -63,11 +61,14 @@ bool cartesolde::ajouter_solde(int id){
     //query1.bindValue(":id_client ", id);
     QSqlQuery query;
     QString res= QString::number(id_compteS);
+    QString res2= QString::number(montant);
+
+
           query.prepare("INSERT INTO CARTESOLDE(ID_COMPTES, MONTANT, DATE_OUVERTURE, ID_CLIENT) "
                         "VALUES (:id_compteS, :montant, :date_ouverture , :id_client)");
           query.bindValue(":id_client", id);
           query.bindValue(":id_compteS",res);
-          query.bindValue(":montant", montant);
+          query.bindValue(":montant", res2);
           query.bindValue(":date_ouverture", date_ouverture);
           return  (query.exec());
                    //&& (query1.exec()));

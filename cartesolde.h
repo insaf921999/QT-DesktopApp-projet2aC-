@@ -9,7 +9,7 @@
 #include <QAbstractItemModel>
 #include <QDate>
 #include <QString>
-class cartesolde 
+class cartesolde
 {
     public:
          cartesolde();

@@ -5,6 +5,7 @@
 #include <QVariant>
 #include <QSqlQueryModel>
 #include <QMessageBox>
+#include <qdebug.h>
 moral::moral()
 {
 
@@ -53,13 +54,13 @@ QString moral:: getNom_entreprise()
 
 bool moral::ajouter_moral(int id){
     QSqlQuery query;
-
+QString res= QString::number(matricule);
           query.prepare("INSERT INTO MORAL (RIB,MATRICULE, NOM_ENTREPRISE, ID_CLIENT) "
                         "VALUES (:RIB, :matricule, :nom_entreprise,:id_client )");
 
           query.bindValue(":id_client", id);
           query.bindValue(":RIB",RIB);
-          query.bindValue(":matricule", matricule);
+          query.bindValue(":matricule", res);
           query.bindValue(":nom_entreprise", nom_entreprise);
 
 
@@ -83,16 +84,27 @@ QSqlQueryModel *moral::afficherM()
 }
 
 
-/*bool moral::modifier()
+bool moral::modifier(int iddclient)
 {
 
+QString res= QString::number(matricule);
+
         QSqlQuery query;
-        query.prepare("update CLIENT set montant=:montant where id_compteS=:id_compteS");
-        query.bindValue(":id_compteS",id_compteS);
-        query.bindValue(":montant", montant);
+        query.prepare("update moral set RIB=:RIB,matricule=:matricule,nom_entreprise=:nom_entreprise where id_client=:id_client");
+        query.bindValue(":id_client",id_client);
+        query.bindValue(":RIB", RIB);
+        query.bindValue(":matricule",res);
+        query.bindValue(":nom_entreprise", nom_entreprise);
+        query.bindValue(":iddclient", iddclient);
+
         return    query.exec();
 
-}*/
+        qDebug()<<id_client;
+                qDebug()<<RIB;
+                        qDebug()<<matricule;
+                                qDebug()<<nom_entreprise;
+
+}
 
 
 

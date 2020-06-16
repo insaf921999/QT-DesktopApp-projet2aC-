@@ -11,14 +11,10 @@ public:
     parkingCode();
     parkingCode(int,QString,int,int);
     int get_id();
-
     QString get_prenom();
     int get_nbrplace();
     int get_nbretage();
-
-
     bool ajouter();
-
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier(int,int);
@@ -33,5 +29,4 @@ private:
     int nbrplace;
     int nbretage;
 };
-
 #endif // PARKINGCODE_H

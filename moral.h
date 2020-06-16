@@ -24,7 +24,7 @@ public:
 
      bool ajouter_moral(int );
      QSqlQueryModel* afficherM();
-     bool modifier();
+     bool modifier(int);
      bool supprimer(int);
      void chercher();
      void chercher (int id_client);
@@ -35,7 +35,7 @@ protected:
     int RIB;
     int matricule;
     QString nom_entreprise;
-
+    int id_client;
 };
 
 

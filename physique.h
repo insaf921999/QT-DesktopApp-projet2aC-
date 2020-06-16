@@ -1,10 +1,13 @@
 #ifndef PHYSIQUE_H
 #define PHYSIQUE_H
-#include "client.h"
 #include <QSqlQueryModel>
 #include <QAbstractItemModel>
 #include <QString>
 #include <QDate>
+#include <QMessageBox>
+#include <QDialog>
+#include <QtWidgets>
+#include "client.h"
 
 class physique : public client
 {
@@ -31,13 +34,15 @@ public:
 
      bool ajouter_physique(int );
      QSqlQueryModel* afficherPH();
-     bool modifier();
+     bool modifier(int);
      bool supprimerPH(long);
      void chercher();
       QSqlQueryModel * rechercher(const QString &cnn);
 
+     //void afficher_physique(QTableWidget *t);
+     //void triClientPH_CIN();
 
-protected:
+//protected:
 
     int CIN;
     QString nom;

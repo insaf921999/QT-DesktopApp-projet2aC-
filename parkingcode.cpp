@@ -12,11 +12,8 @@ parkingCode::parkingCode()
 {
 
 }
-
-
 parkingCode::parkingCode(int id, QString prenom, int nbrplace,int nbretage )
 {
-
     this->id=id;
     this->nbrplace=nbrplace;
     this->nbretage=nbretage;

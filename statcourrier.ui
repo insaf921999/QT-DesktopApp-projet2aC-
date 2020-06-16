@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>stat_no</class>
- <widget class="QDialog" name="stat_no">
+ <class>statcourrier</class>
+ <widget class="QDialog" name="statcourrier">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>702</width>
-    <height>423</height>
+    <width>893</width>
+    <height>499</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #e2a99f8a;
+   <string notr="true"> background-color: #e2a99f8a;
 /*background-color:#e2a99f;*/
 QToolTip
 {
@@ -477,55 +477,22 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
     border: 1px solid #444;
 }</string>
   </property>
-  <widget class="QGroupBox" name="tabe">
+  <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>681</width>
-     <height>401</height>
+     <x>20</x>
+     <y>20</y>
+     <width>831</width>
+     <height>431</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">QGroupBox {
-  /*   background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                       stop: 0 black, stop: 1 #FFFFFF);*/
-     border: 2px solid black;
-     border-radius: 5px;
-     margin-top: 1ex; /* leave space at the top for the title */
- }
-
- QGroupBox::title {
-     subcontrol-origin: margin;
-     subcontrol-position: top center; /* position at the top center */
-     padding: 0 3px;
-     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                       stop: 0 #FFOECE, stop: 1 #FFFFFF);
- }</string>
-   </property>
-   <property name="title">
-    <string>Statistique Parking</string>
-   </property>
-   <widget class="QTableView" name="table_no">
+   <widget class="QCustomPlot" name="customPlot" native="true">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>320</y>
-      <width>491</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: white ; background-color: darkcyan</string>
-    </property>
-   </widget>
-   <widget class="QCustomPlot" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>611</width>
-      <height>291</height>
+      <y>40</y>
+      <width>691</width>
+      <height>321</height>
      </rect>
     </property>
    </widget>

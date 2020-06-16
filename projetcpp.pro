@@ -5,6 +5,7 @@ QT       += core network networkauth
 QT       += network
 QT       +=sql
 QT       +=serialport
+QT       +=multimedia
 
 LIBS += -LC:/OpenSSL-Win64/bin
 LIBS += -LC:/OpenSSL-Win64/lib -llibssl -llibcrypto
@@ -29,27 +30,52 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    abonnementcode.cpp \
+    agent.cpp \
+    cartesolde.cpp \
+    client.cpp \
     coli.cpp \
+    conge2.cpp \
     connexion.cpp \
     courrier.cpp \
+    login.cpp \
     mailing.cpp \
     main.cpp \
     mainwindow.cpp \
+    moral.cpp \
+    parkingcode.cpp \
+    physique.cpp \
     qcustomplot.cpp \
-    smtp.cpp
+    smtp.cpp \
+    stat_no.cpp \
+    statistique.cpp
 
 HEADERS += \
+    abonnementcode.h \
+    agent.h \
+    cartesolde.h \
+    client.h \
     coli.h \
+    conge2.h \
     connexion.h \
     courrier.h \
+    login.h \
     mailing.h \
     mainwindow.h \
+    moral.h \
+    parkingcode.h \
+    physique.h \
     qcustomplot.h \
-    smtp.h
+    smtp.h \
+    stat_no.h \
+    statistique.h
 
 FORMS += \
+    login.ui \
     mailing.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    stat_no.ui \
+    statistique.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -57,6 +83,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    img/print.jpg \
     img/unnamed.png
 
 RESOURCES += \

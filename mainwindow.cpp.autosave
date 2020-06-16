@@ -758,21 +758,22 @@ void MainWindow::on_pbrechcourrier_clicked()
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
     int i=0;
-    QLinearGradient gradient(0, 0, 0, 400);
-    gradient.setColorAt(0, QColor(90, 90, 90));
-    gradient.setColorAt(0.38, QColor(105, 105, 105));
-    gradient.setColorAt(1, QColor(70, 70, 70));
-    ui->customPlot->setBackground(QBrush(gradient));
-    QCPBars *regen = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
+    QLinearGradient gradient(0, 0, 0, 400); //background
+    gradient.setColorAt(0, QColor(90, 90, 90));//coleur
+    gradient.setColorAt(0.38, QColor(105, 105, 105));//coleur
+    gradient.setColorAt(1, QColor(70, 70, 70));//coleur
+    ui->customPlot->setBackground(QBrush(gradient));//intialiser background
+    QCPBars *regen = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);//intialiser x et y sur l interface
     regen->setAntialiased(false);
     regen->setStackingGap(1);
-    regen->setName("Moyen de paiement");
-    regen->setPen(QPen(QColor(111, 9, 176).lighter(170)));
-    regen->setBrush(QColor(111, 9, 176));
-    // prepare x axis with country labels:
+    regen->setName("Moyen de paiement");// Titre stat
+    regen->setPen(QPen(QColor(111, 9, 176).lighter(170)));//coleur
+    regen->setBrush(QColor(111, 9, 176));//coleur
+    
+    // prepare x axis with country titre element "par carte et en especs:
     QVector<double> ticks;
     QVector<QString> labels;
-    ticks << 1 << 2 ;
+    ticks << 1 << 2 ; //nombre des element lhouma en espace et par carte
     labels << "en especes " << "par carte" ;
     QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
     textTicker->addTicks(ticks, labels);
@@ -803,34 +804,34 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
 
     // Add data:
     QVector<double> regenData;
-int stat100;
-int stat500;
+int stat100; //initialiser 
+int stat500; //initialiser 
 
-QString var1="en especes";
-QString var2="par carte";
+QString var1="en especes";////initialiser 
+QString var2="par carte";////initialiser 
 
-QSqlQuery query1("select count(*) from courrier where paiement3='"+var1+"'");
+QSqlQuery query1("select count(*) from courrier where paiement3='"+var1+"'");//count 9eh mn courrier b especes
 while (query1.next()) {
 
                         stat100 = query1.value(0).toInt();
 
-QSqlQuery query2("select count(*) from courrier where paiement3 ='"+var2+"'  ");
+QSqlQuery query2("select count(*) from courrier where paiement3 ='"+var2+"'  ");//count 9eh mn courrier b carte
 while (query2.next()) {
                            stat500 = query2.value(0).toInt();
 
                              }
-    regenData << stat100 << stat500  ;
+    regenData << stat100 << stat500  ; //insertion des donée sur stat
     regen->setData(ticks, regenData);
 
     // setup legend:
-    ui->customPlot->legend->setVisible(true);
+    ui->customPlot->legend->setVisible(true); //stat visible "afficher stat"
     ui->customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
     ui->customPlot->legend->setBrush(QColor(255, 255, 255, 100));
     ui->customPlot->legend->setBorderPen(Qt::NoPen);
     QFont legendFont = font();
     legendFont.setPointSize(10);
     ui->customPlot->legend->setFont(legendFont);
-    ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+    ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom); // ynajem y zoomi fel stat
 }
 }
 

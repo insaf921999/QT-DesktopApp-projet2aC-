@@ -1,10 +1,10 @@
 #include "physique.h"
-#include "client.h"
 #include <QSqlQuery>
 #include <QString>
 #include <QVariant>
 #include <QSqlQueryModel>
 #include <QMessageBox>
+#include "client.h"
 
 
 physique::physique()
@@ -90,6 +90,7 @@ QString physique:: getEmail()
 
 
 bool physique::ajouter_physique(int id){
+
     QSqlQuery query1;
 
           query1.prepare("INSERT INTO PHYSIQUE( CIN, NOM, PRENOM , DATE_NAISSANCE , ADRESSE , EMAIL , ID_CLIENT) "
@@ -106,6 +107,7 @@ bool physique::ajouter_physique(int id){
 
           return  query1.exec();
 
+
 }
 
 
@@ -120,9 +122,39 @@ QSqlQueryModel *physique::afficherPH()
       model->setHeaderData(3, Qt::Horizontal, QObject::tr("Date_naissance"));
       model->setHeaderData(4, Qt::Horizontal, QObject::tr("Adresse"));
       model->setHeaderData(5, Qt::Horizontal, QObject::tr("Email"));
+     // model->setHeaderData(6, Qt::Horizontal, QObject::tr("ID_Clinet"));
       return model;
 
 }
+/*void physique::afficher_physique(QTableWidget *t)
+ {
+    QSqlQuery qry;
+    int i;
+    int j=0;
+    qry.exec("select * from PHYSIQUE");
+    while(qry.next()){
+        j++;
+    }
+    t->setRowCount(j);
+    t->setColumnCount(7);
+    t->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    t->setHorizontalHeaderLabels(QString(" CIN ; NOM ; PRENOM ; DATE_NAISSANCE ; ADRESSE ; EMAIL ; ID_CLIENT ").split(" ; "));
+    i=1;
+    qry.exec("select* from  PHYSIQUE");
+    while(qry.next())
+    {
+               t->setItem(i-1,0,new QTableWidgetItem(qry.value(0).toString()));
+               t->setItem(i-1,1,new QTableWidgetItem(qry.value(1).toString()));
+               t->setItem(i-1,2,new QTableWidgetItem(qry.value(2).toString()));
+               t->setItem(i-1,3,new QTableWidgetItem(qry.value(3).toString()));
+               t->setItem(i-1,4,new QTableWidgetItem(qry.value(4).toString()));
+               t->setItem(i-1,5,new QTableWidgetItem(qry.value(5).toString()));
+               t->setItem(i-1,6,new QTableWidgetItem(qry.value(6).toString()));
+
+
+    i++;
+    }
+}*/
 
 
 bool physique::supprimerPH(long cinn)
@@ -135,14 +167,17 @@ return    query.exec();
 }
 
 
-bool physique::modifier()
+bool physique::modifier(int cinn)
 {
 
         QSqlQuery query;
-        query.prepare("update PHYSIQUE set adresse=:adresse,email=:email where CIN=:CIN ");
-      //  query.bindValue(":Cin", CIN);
-        query.bindValue(":adresse", adresse);
+        QString res= QString::number(CIN);
+        query.prepare("update PHYSIQUE set adresse=:adresse,email=:email where CIN=:cinn ");
+        query.bindValue(":Cin", res);
+        query.bindValue(":adresse",adresse);
         query.bindValue(":email",email);
+        query.bindValue(":cinn",cinn);
+
         return    query.exec();
 
 }
@@ -159,3 +194,5 @@ QSqlQueryModel * physique::rechercher(const QString &cnn)
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("EMAIL "));
     return model;
 }
+
+

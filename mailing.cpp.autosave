@@ -57,10 +57,10 @@ void mailing::on_SendEmail_clicked()
        QString subject=ui->subject->text();
        QString msg=ui->msg->toPlainText();
        qDebug()<< email;
-       Smtp* smtp=new Smtp("insaf.elinkichari@esprit.tn","181JFT2762","smtp.gmail.com");
-                      connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
-       smtp->sendMail("", email ,subject," "+msg+" ");
-        if((email=="") || (subject=="") || (msg==""))
+       Smtp* smtp=new Smtp("insaf.elinkichari@esprit.tn","181JFT2762","smtp.gmail.com");//email pass gmail
+                      connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));//tester email pass (gmail)
+       smtp->sendMail("", email ,subject," "+msg+" ");// emailDestinataire titremessage message
+        if((email=="") || (subject=="") || (msg==""))//tester if vide 
         {
             QMessageBox::warning( 0, tr( "Qt Simple SMTP" ), tr( "il Ya un champ Vide!\n\n" ) );
         }

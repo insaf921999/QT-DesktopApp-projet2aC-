@@ -15,5 +15,6 @@
         <file>img/search.png</file>
         <file>img/up.png</file>
         <file>img/1.jpg</file>
+        <file>img/print.jpg</file>
     </qresource>
 </RCC>
